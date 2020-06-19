@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Unit 2 Assessment</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>To Do List</h1>
+  <% if(data.length === 0) { %>
+  <h3>There are no To Dos yet!</h3>
+  <%}else{%>
+  <%for(let i = 0; i < data.length; i++){%>
+  <ul>
+    <li>
+      <%= data[i].content%>
+      -
+      <%=data[i].done = false ? 'Done' : 'Not Done' %>
+      <form method="post" , action="/removetodo/<%=data[i].id%>">
+        <button id="todo-remove" type="submit">DELETE</button>
+      </form>
+    </li>
+  </ul>
+  <%}%>
+  <%}%>
+  <form method="post" , action="/addtodo">
+    <input name="todoin" type="text" required />
+    <button id="todo-submit" type="submit">Submit</button>
+  </form>
+</body>
+
+</html>
